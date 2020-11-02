@@ -1,0 +1,19 @@
+.usage {
+    margin: 1em;
+}
+
+.usage div {
+    margin: 1em;
+}
+
+.usage .image {
+    text-align: center;
+}
+
+.usage img {
+    width: 80%;
+}
+
+.usage h3 {
+    color: #1990b5;
+}

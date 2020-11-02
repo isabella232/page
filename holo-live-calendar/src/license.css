@@ -1,0 +1,18 @@
+.sentence {
+    margin: 0 1em 1em 1em;
+    padding: 1em;
+    background-color: #dbdbdb;
+    border-radius: 1em;
+}
+
+code.license {
+    font-size: 1em;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Noto Serif JP', serif;
+}
+
+.header {
+    font-size: 1em;
+    padding: 1em;
+    margin: 0;
+}
