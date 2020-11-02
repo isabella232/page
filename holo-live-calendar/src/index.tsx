@@ -9,7 +9,8 @@ import CopyDark from './CopyDark.svg'
 interface State {
   idols: boolean[],
   url: string,
-  copied: boolean
+  copied: boolean,
+  isAllChecked: boolean
 }
 
 class CreateURL extends React.Component<{}, State> {
@@ -19,11 +20,14 @@ class CreateURL extends React.Component<{}, State> {
     this.state = {
       idols: Array(getAllLength()).fill(false),
       url: 'http://g/',
-      copied: false
+      copied: false,
+      isAllChecked: false
     }
 
     this.opURL = this.opURL.bind(this)
     this.generateURL = this.generateURL.bind(this)
+    this.createCheckBox = this.createCheckBox.bind(this)
+    this.allChecks = this.allChecks.bind(this)
   }
 
   /**
@@ -34,7 +38,6 @@ class CreateURL extends React.Component<{}, State> {
     const name = event.currentTarget.getAttribute('data-name')
     if(name != null){
       const index = getIdolIndex(name)
-      console.log(this.state.idols[index])
       const idols = this.state.idols
 
       // add or remove with checkbox state
@@ -43,13 +46,14 @@ class CreateURL extends React.Component<{}, State> {
       }else{
         idols[index] = true
       }
-      const url = this.generateURL()
+      const url = this.generateURL(idols)
 
       this.setState(state => {
         return {
           idols: idols,
           copied: false,
-          url: url
+          url: url,
+          isAllChecked: false
         }
       })
     }
@@ -58,10 +62,10 @@ class CreateURL extends React.Component<{}, State> {
   /**
    * URLを生成する。
    */
-  generateURL(): string {
+  generateURL(idols: boolean[]): string {
     const idolUrlNames: string[] = []
 
-    this.state.idols.forEach((element, index) => {
+    idols.forEach((element, index) => {
       if(element){
         const idolData = getIdolData(index)
         if(idolData !== undefined){
@@ -70,6 +74,41 @@ class CreateURL extends React.Component<{}, State> {
       }
     })
     return `http://g/?idols=${idolUrlNames.join(',')}`
+  }
+
+  /**
+   * 各チェックボックスを作成する。
+   */
+  createCheckBox() {
+    const checkbox = []
+    for(let i = 0; getAllLength() > i; ++i){
+      const name = getIdolData(i)
+      checkbox.push(
+        <span>
+          <input type="checkbox" checked={this.state.idols[i]} onChange={this.opURL} data-name={name?.urlName} />{name?.name}
+        </span>
+      )
+    }
+    return checkbox
+  }
+
+  /**
+   * 全選択と全選択解除
+   */
+  allChecks(){
+    if(!this.state.isAllChecked){
+      this.setState(state => ({
+        idols: state.idols.map(() => true),
+        isAllChecked: true,
+        url: this.generateURL(state.idols.map(() => true))
+      }))
+    }else{
+      this.setState(state => ({
+        idols: state.idols.map(() => false),
+        isAllChecked: false,
+        url: this.generateURL(state.idols.map(() => false))
+      }))
+    }
   }
 
   render(){
@@ -88,7 +127,12 @@ class CreateURL extends React.Component<{}, State> {
             </CopyToClipBoard>
           </div>
         </div>
-        <input type="checkbox" checked={this.state.idols[getIdolIndex('korone')]} onChange={this.opURL} data-name="korone" />ころね
+        <div>
+          <button onClick={this.allChecks}>
+            {this.state.isAllChecked ? "すべてを選択を解除" : "すべての選択"}
+          </button>
+        </div>
+        {this.createCheckBox()}
       </div>
     )
   }
