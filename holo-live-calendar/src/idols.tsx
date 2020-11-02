@@ -61,7 +61,7 @@ const IDOLS: IdolData[] = [
     channelURL: "https://www.youtube.com/channel/UCFTLzh12_nrtzqBPsTCqenA"
   },
   {
-    name: "港あくあ",
+    name: "湊あくあ",
     index: 9,
     urlName: "aqua",
     channelURL: "https://www.youtube.com/channel/UC1opHUrw8rvnsadT-iGp7Cg"
