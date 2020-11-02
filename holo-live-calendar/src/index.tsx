@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import CopyToClipBoard from 'react-copy-to-clipboard'
 import {getIdolIndex, getAllLength, getIdolData} from './idols'
 import './index.css'
+import Copy from './Copy.svg'
 
 interface State {
   idols: boolean[],
@@ -16,7 +17,7 @@ class CreateURL extends React.Component<{}, State> {
 
     this.state = {
       idols: Array(getAllLength()).fill(false),
-      url: '',
+      url: 'http://g/',
       copied: false
     }
 
@@ -24,6 +25,10 @@ class CreateURL extends React.Component<{}, State> {
     this.generateURL = this.generateURL.bind(this)
   }
 
+  /**
+   * URLの作成を行う。
+   * チェックボックスの`data-name`を読み込み、そのuserを追加する。
+   */
   opURL(event: FormEvent){
     const name = event.currentTarget.getAttribute('data-name')
     if(name != null){
@@ -31,6 +36,7 @@ class CreateURL extends React.Component<{}, State> {
       console.log(this.state.idols[index])
       const idols = this.state.idols
 
+      // add or remove with checkbox state
       if(this.state.idols[index]){
         idols[index] = false
       }else{
@@ -48,6 +54,9 @@ class CreateURL extends React.Component<{}, State> {
     }
   }
 
+  /**
+   * URLを生成する。
+   */
   generateURL(): string {
     const idolUrlNames: string[] = []
 
@@ -59,28 +68,35 @@ class CreateURL extends React.Component<{}, State> {
         }
       }
     })
-    return `http://g/?${idolUrlNames.join('&')}`
+    return `http://g/?idols=${idolUrlNames.join(',')}`
   }
 
   render(){
     return (
       <div>
-        <div>
-          {this.state.url}
+        <div className="urlAndCopy">
+          <div className="generatedUrl">
+            {this.state.url}
+          </div>
+          <div className="copyButtonArea">
+            <CopyToClipBoard text={this.state.url}
+              onCopy={() => this.setState({copied: true})}>
+              <button className="copyButton">
+                {this.state.copied ? <div><img src={Copy} className="copyLogo" /> コピーした!</div> : <div><img src={Copy} className="copyLogo" /> コピー</div>}
+              </button>
+            </CopyToClipBoard>
+          </div>
         </div>
-        <CopyToClipBoard text={this.state.url}
-          onCopy={() => this.setState({copied: true})}>
-          <button>{this.state.copied ? 'コピーした！' : 'コピー'}</button>
-        </CopyToClipBoard>
-        <div>
         <input type="checkbox" checked={this.state.idols[getIdolIndex('korone')]} onChange={this.opURL} data-name="korone" />ころね
-        </div>
       </div>
     )
   }
 }
 
 ReactDOM.render(
-  <CreateURL />,
+  <div>
+    <h1>ホロライブ ライブ カレンダー</h1>
+    <CreateURL />
+  </div>,
   document.getElementById('root')
 );
