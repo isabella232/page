@@ -14,12 +14,16 @@ interface State {
 }
 
 class CreateURL extends React.Component<{}, State> {
+  private url: string
+
   constructor(props: {}){
     super(props)
 
+    this.url = 'http://hogehoge.com/'
+
     this.state = {
       idols: Array(getAllLength()).fill(false),
-      url: 'http://hogehoge.com/',
+      url: this.url,
       copied: false,
       isAllChecked: false
     }
@@ -74,9 +78,9 @@ class CreateURL extends React.Component<{}, State> {
       }
     })
     if(idolUrlNames.length > 0){
-      return `http://hogehoge.com/?idols=${idolUrlNames.join(',')}`
+      return `${this.url}?idols=${idolUrlNames.join(',')}`
     }
-    return 'http://hogehoge.com/'
+    return this.url
   }
 
   /**
