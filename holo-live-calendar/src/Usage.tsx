@@ -9,7 +9,6 @@ export class Usage extends React.Component<{}, {}> {
     super(props)
 
   }
-
   render() {
     return (
       <div className="usage">
@@ -22,7 +21,7 @@ export class Usage extends React.Component<{}, {}> {
       <div>設定の左のメニューから<b>カレンダーを追加</b>→<b>URLで追加</b>を押します。</div>
       <div className="image"><img src={usage2} /></div>
       <h3>4. URLを貼り付ける。</h3>
-      先程コピーしたURLを貼り付けて<b>カレンダーを追加</b>を押し、追加します。
+      <div>先程コピーしたURLを貼り付けて<b>カレンダーを追加</b>を押し、追加します。</div>
       </div>
       )
     }

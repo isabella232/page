@@ -87,16 +87,26 @@ export class CreateURL extends React.Component<{}, State> {
    * 各チェックボックスを作成する。
    */
   createCheckBox() {
-    const checkbox = []
-    for(let i = 0; getAllLength() > i; ++i){
-      const name = getIdolData(i)
+    let checkbox = []
+    const slicedCheckbox = []
+    const maxLength = getAllLength()
+    for(let i = 1; maxLength >= i; ++i){
+      const name = getIdolData(i-1)
       checkbox.push(
-        <span>
-          <input type="checkbox" checked={this.state.idols[i]} onChange={this.opURL} data-name={name?.urlName} />{name?.name}
-        </span>
+        <div>
+          <input id={`box${i}`} type="checkbox" checked={this.state.idols[i-1]} onChange={this.opURL} data-name={name?.urlName} />
+          <label htmlFor={`box${i}`}>{name?.name}</label>
+        </div>
       )
+      if(i % 4 == 0 || i === maxLength){
+        slicedCheckbox.push(
+        <div className="checkIdol">
+          {checkbox}
+        </div>)
+        checkbox = []
+      }
     }
-    return checkbox
+    return slicedCheckbox
   }
 
   /**
@@ -123,6 +133,12 @@ export class CreateURL extends React.Component<{}, State> {
   render(){
     return (
       <div>
+        <div className="allSelect">
+          <button onClick={this.allChecks}>
+            {this.state.isAllChecked ? "すべての選択を解除" : "すべてを選択"}
+          </button>
+        </div>
+        {this.createCheckBox()}
         <div className="urlAndCopy">
           <div className="generatedUrl">
             <code>{this.state.url}</code>
@@ -136,12 +152,6 @@ export class CreateURL extends React.Component<{}, State> {
             </CopyToClipBoard>
           </div>
         </div>
-        <div>
-          <button onClick={this.allChecks}>
-            {this.state.isAllChecked ? "すべての選択を解除" : "すべてを選択"}
-          </button>
-        </div>
-        {this.createCheckBox()}
       </div>
     )
   }

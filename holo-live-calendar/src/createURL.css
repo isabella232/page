@@ -1,47 +1,83 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
 code{
     font-family: 'Noto Sans JP', sans-serif;
     font-weight: 500;
     font-size: 4vw;
     white-space: pre-line;
-  }
+}
 
-  .urlAndCopy {
-    margin: 3em;
-  }
+.urlAndCopy {
+  margin: 3em;
+}
 
-  .generatedUrl {
-    text-align: center;
-    background-color: #4ac8f0;
-    margin: 0;
-    padding: 1em;
-    color: white;
-    border-radius: 30px 30px 0 0;
-  }
+.generatedUrl {
+  text-align: center;
+  background-color: #4ac8f0;
+  margin: 0;
+  padding: 1em;
+  color: white;
+  border-radius: 30px 30px 0 0;
+}
 
-  .copyButtonArea {
-    text-align: center;
-    background-color: #4ac8f0;
-    border-radius: 0 0 30px 30px;
+.copyButtonArea {
+  text-align: center;
+  background-color: #4ac8f0;
+  border-radius: 0 0 30px 30px;
 
-  }
+}
 
-  .copyButton:hover {
-    background-color: #1990b5;
-  }
+.copyButton:hover {
+  background-color: #1990b5;
+}
 
-  .copied {
-    color: #093947;
-  }
+.copied {
+  color: #093947;
+}
 
-  .copyButton {
-    background-color: #4ac8f0;
-    color: white;
-    font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 900;
-    border: 0;
-    font-size: 1.2em;
-    padding: 0.7em;
-    margin: 0;
-    width: 100%;
-    border-radius: 0 0 30px 30px;
-  }
+.copyButton {
+  background-color: #4ac8f0;
+  color: white;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 900;
+  border: 0;
+  font-size: 1.2em;
+  padding: 0.7em;
+  margin: 0;
+  width: 100%;
+  border-radius: 0 0 30px 30px;
+}
+
+.checkIdol {
+  display: inline-block;
+  margin: 1.5em;
+}
+
+.allSelect button {
+  font-size: 0.7em;
+  color: black;
+}
+
+label {
+  font-size: 1em;
+  color: black;
+}
+
+
+input[type=checkbox] { display:none; } /* to hide the checkbox itself */
+input[type=checkbox] + label:before {
+  font-family: FontAwesome;
+  display: inline-block;
+  color: #1990b5;
+  font-size: 1.2em;
+}
+
+input[type=checkbox] + label:before {
+   content: "\f096";
+   letter-spacing: 10px;
+}
+
+input[type=checkbox]:checked + label:before {
+   content: "\f046";
+   letter-spacing: 10px;
+}
