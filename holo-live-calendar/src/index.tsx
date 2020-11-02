@@ -4,6 +4,7 @@ import CopyToClipBoard from 'react-copy-to-clipboard'
 import {getIdolIndex, getAllLength, getIdolData} from './idols'
 import './index.css'
 import Copy from './Copy.svg'
+import CopyDark from './CopyDark.svg'
 
 interface State {
   idols: boolean[],
@@ -82,7 +83,7 @@ class CreateURL extends React.Component<{}, State> {
             <CopyToClipBoard text={this.state.url}
               onCopy={() => this.setState({copied: true})}>
               <button className="copyButton">
-                {this.state.copied ? <div><img src={Copy} className="copyLogo" /> コピーした!</div> : <div><img src={Copy} className="copyLogo" /> コピー</div>}
+                {this.state.copied ? <div className="copied"><img src={CopyDark} className="copyLogo" /> コピーした！</div> : <div><img src={Copy} className="copyLogo" /> コピー</div>}
               </button>
             </CopyToClipBoard>
           </div>
@@ -96,6 +97,11 @@ class CreateURL extends React.Component<{}, State> {
 ReactDOM.render(
   <div>
     <h1>ホロライブ ライブ カレンダー</h1>
+    <ul className="tag">
+      <li>使い方</li>
+      <li>ライセンス</li>
+      <li>お問い合わせ</li>
+    </ul>
     <CreateURL />
   </div>,
   document.getElementById('root')

@@ -8,7 +8,7 @@ h1 {
   text-align: center;
   background-color: #4ac8f0;
   margin: 0;
-  padding: 1em;
+  padding: 1em 1em 0.5em 1em;
   font-weight: 500;
   font-size: 2.5em;
   color: white;
@@ -25,18 +25,26 @@ h1 {
   padding: 1em;
   color: white;
   font-size: 5vmin;
-  border-radius: 1em 1em 0 0;
+  border-radius: 30px 30px 0 0;
 }
 
 .copyButtonArea {
   text-align: center;
-  background-color: #1990b5;
-  border-radius: 0 0 1em 1em;
+  background-color: #4ac8f0;
+  border-radius: 0 0 30px 30px;
 
 }
 
-.copyButton {
+.copyButton:hover {
   background-color: #1990b5;
+}
+
+.copied {
+  color: #093947;
+}
+
+.copyButton {
+  background-color: #4ac8f0;
   color: white;
   font-family: 'Noto Sans JP', sans-serif;
   font-weight: 900;
@@ -45,5 +53,30 @@ h1 {
   padding: 0.7em;
   margin: 0;
   width: 100%;
-  border-radius: 0 0 1em 1em;
+  border-radius: 0 0 30px 30px;
+}
+
+.tag {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #4ac8f0;
+  text-align: center;
+}
+
+.tag li {
+  display:inline-block;
+  color: white;
+  margin: 0;
+  padding: 1em 3em 1em 3em;
+  text-align: center;
+}
+
+.tag li:last-child {
+  border-right: none;
+}
+
+.tag li:hover {
+  background-color: #1990b5;
 }
