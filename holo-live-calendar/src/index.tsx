@@ -107,12 +107,14 @@ class CreateURL extends React.Component<{}, State> {
       this.setState(state => ({
         idols: state.idols.map(() => true),
         isAllChecked: true,
+        copied: false,
         url: this.generateURL(state.idols.map(() => true))
       }))
     }else{
       this.setState(state => ({
         idols: state.idols.map(() => false),
         isAllChecked: false,
+        copied: false,
         url: this.generateURL(state.idols.map(() => false))
       }))
     }
@@ -123,7 +125,7 @@ class CreateURL extends React.Component<{}, State> {
       <div>
         <div className="urlAndCopy">
           <div className="generatedUrl">
-            {this.state.url}
+            <code>{this.state.url}</code>
           </div>
           <div className="copyButtonArea">
             <CopyToClipBoard text={this.state.url}
