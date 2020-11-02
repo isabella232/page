@@ -19,7 +19,7 @@ class CreateURL extends React.Component<{}, State> {
 
     this.state = {
       idols: Array(getAllLength()).fill(false),
-      url: 'http://g/',
+      url: 'http://hogehoge.com/',
       copied: false,
       isAllChecked: false
     }
@@ -73,7 +73,10 @@ class CreateURL extends React.Component<{}, State> {
         }
       }
     })
-    return `http://g/?idols=${idolUrlNames.join(',')}`
+    if(idolUrlNames.length > 0){
+      return `http://hogehoge.com/?idols=${idolUrlNames.join(',')}`
+    }
+    return 'http://hogehoge.com/'
   }
 
   /**
@@ -129,7 +132,7 @@ class CreateURL extends React.Component<{}, State> {
         </div>
         <div>
           <button onClick={this.allChecks}>
-            {this.state.isAllChecked ? "すべてを選択を解除" : "すべての選択"}
+            {this.state.isAllChecked ? "すべての選択を解除" : "すべてを選択"}
           </button>
         </div>
         {this.createCheckBox()}
