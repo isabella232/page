@@ -19,7 +19,7 @@ export class CreateURL extends React.Component<{}, State> {
   constructor(props: {}){
     super(props)
 
-    this.url = 'http://hogehoge.com/'
+    this.url = 'http://リンク/'
 
     this.state = {
       idols: Array(getAllLength()).fill(false),
