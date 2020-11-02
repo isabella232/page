@@ -115,68 +115,74 @@ const IDOLS: IdolData[] = [
     channelURL: "https://www.youtube.com/channel/UCvInZx9h3jC2JzsIzoOebWg"
   },
   {
-    name: "宝鐘マリン",
+    name: "白銀ノエル",
     index: 18,
+    urlName: "noel",
+    channelURL: "https://www.youtube.com/channel/UCdyqAaZDKHXg4Ahi7VENThQ"
+  },
+  {
+    name: "宝鐘マリン",
+    index: 19,
     urlName: "marine",
     channelURL: "https://www.youtube.com/channel/UCCzUftO8KOVkV4wQG1vkUvg"
   },
   {
     name: "兎田ぺこら",
-    index: 19,
+    index: 20,
     urlName: "pekora",
     channelURL: "https://www.youtube.com/channel/UC1DCedRgGHBdm81E1llLhOQ"
   },
   {
     name: "潤羽るしあ",
-    index: 20,
+    index: 21,
     urlName: "rushia",
     channelURL: "https://www.youtube.com/channel/UCl_gCybOJRIgOXw6Qb4qJzQ"
   },
   {
     name: "星街すいせい",
-    index: 21,
+    index: 22,
     urlName: "suisei",
     channelURL: "https://www.youtube.com/channel/UC5CwaMl1eIgY8h02uZw7u8A"
   },
   {
     name: "天音かなた",
-    index: 22,
+    index: 23,
     urlName: "kanata",
     channelURL: "https://www.youtube.com/channel/UCZlDXzGoo7d44bwdNObFacg"
   },
   {
     name: "桐生ココ",
-    index: 23,
+    index: 24,
     urlName: "coco",
     channelURL: "https://www.youtube.com/channel/UCS9uQI-jC3DE0L4IpXyvr6w"
   },
   {
     name: "角巻わため",
-    index: 24,
+    index: 25,
     urlName: "watame",
     channelURL: "https://www.youtube.com/channel/UCqm3BQLlJfvkTsX_hvm0UmA"
   },
   {
     name: "常闇トワ",
-    index: 25,
+    index: 26,
     urlName: "towa",
     channelURL: "https://www.youtube.com/channel/UC1uv2Oq6kNxgATlCiez59hw"
   },
   {
     name: "姫森ルーナ",
-    index: 26,
+    index: 27,
     urlName: "luna",
     channelURL: "https://www.youtube.com/channel/UCa9Y57gfeY0Zro_noHRVrnw"
   },
   {
     name: "雪花ラミィ",
-    index: 27,
+    index: 28,
     urlName: "lamy",
     channelURL: "https://www.youtube.com/channel/UCFKOVgVbGmX65RxO3EtH3iw"
   },
   {
     name: "桃鈴ねね",
-    index: 28,
+    index: 29,
     urlName: "nene",
     channelURL: "https://www.youtube.com/channel/UCAWSyEs_Io8MtpY3m-zqILA"
   }
