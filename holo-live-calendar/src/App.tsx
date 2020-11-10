@@ -4,62 +4,34 @@ import {CreateURL} from './CreateURL'
 import {Usage} from './Usage'
 import {License} from './License'
 import {Connection} from './Connection'
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 
-interface State {
-  page: any
-}
-
-export class App extends React.Component<{}, State> {
+export class App extends React.Component<{}, {}> {
   constructor(props: {}){
     super(props)
-
-    this.state = {
-      page: <CreateURL />
-    }
-
-    this.usage = this.usage.bind(this)
-    this.home = this.home.bind(this)
-    this.license = this.license.bind(this)
-    this.connection = this.connection.bind(this)
-  }
-
-  home() {
-    this.setState(state => ({
-      page: <CreateURL />
-    }))
-  }
-
-  usage() {
-    this.setState(state => ({
-      page: <Usage />
-    }))
-  }
-
-  license(){
-    this.setState(state => ({
-      page: <License />
-    }))
-  }
-
-  connection() {
-    this.setState(state => ({
-      page: <Connection />
-    }))
   }
 
   render() {
     return (
       <div>
+      <BrowserRouter>
       <h1>ホロライブ ライブ カレンダー</h1>
       <ul className="tag">
+
         <li>
-          <button onClick={this.home} className="menu">ホーム</button>
+          <Link to="/">
+            <button className="menu">ホーム</button>
+          </Link>
         </li>
         <li>
-          <button onClick={this.usage} className="menu">使い方</button>
+          <Link to="/usage">
+            <button className="menu">使い方</button>
+          </Link>
         </li>
         <li>
-          <button onClick={this.license} className="menu">ライセンス</button>
+          <Link to="license">
+            <button className="menu">ライセンス</button>
+          </Link>
         </li>
         <li>
           <a href="https://github.com/Holo-Live-Calendar" target="_blank" rel="noopener" className="menu">
@@ -67,11 +39,19 @@ export class App extends React.Component<{}, State> {
           </a>
         </li>
         <li>
-          <button onClick={this.connection} className="menu">お問い合わせ</button>
+          <Link to="contact">
+            <button className="menu">お問い合わせ</button>
+          </Link>
         </li>
       </ul>
-      {this.state.page}
+      <div>
+        <Route path="/" exact component={CreateURL} />
+        <Route path="/usage" component={Usage} />
+        <Route path="/license" component={License} />
+        <Route path="/contact" component={Connection} />
       </div>
+    </BrowserRouter>
+    </div>
       )
     }
   }
